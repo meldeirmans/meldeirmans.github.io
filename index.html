@@ -1,84 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mel de Irmáns — Apicultura Galega</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Mel de Irmáns — Apicultura Galega</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:Georgia,serif;background:#FFFDF8;color:#2C2C2A}
-    a{text-decoration:none;color:inherit}
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,serif;background:#FFFDF8;color:#2C2C2A}
+a{text-decoration:none;color:inherit}
 
-    .whatsapp{
-      position:fixed;bottom:20px;right:20px;
-      width:56px;height:56px;border-radius:50%;
-      background:#25D366;color:#fff;
-      display:flex;align-items:center;justify-content:center;
-      font-size:26px;z-index:100
-    }
+/* WhatsApp flotante */
+.whatsapp{
+  position:fixed;bottom:20px;right:20px;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;z-index:100
+}
 
-    nav{
-      display:flex;justify-content:space-between;align-items:center;
-      padding:1rem 2rem;border-bottom:1px solid #EFE8D8;
-      background:#FFFDF8;position:sticky;top:0
-    }
-    .nav-logo{display:flex;align-items:center;gap:10px;font-weight:bold;color:#633806}
-    .nav-logo img{height:42px}
-    .nav-links{display:flex;gap:1rem;font-size:13px;font-family:sans-serif}
-    .nav-links a{color:#888}
-    .nav-links a:hover{color:#000}
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 2rem;border-bottom:1px solid #EFE8D8;
+  background:#FFFDF8;position:sticky;top:0;z-index:10
+}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:bold;color:#633806}
+.nav-logo img{height:42px}
+.nav-links{display:flex;gap:1rem;font-size:13px;font-family:sans-serif}
+.nav-links a{color:#888}
+.nav-links a:hover{color:#000}
 
-    .hero{
-      max-width:900px;margin:auto;padding:4rem 2rem;
-      display:flex;gap:2rem;align-items:center;justify-content:space-between
-    }
-    .hero h1{font-size:40px;color:#412402;margin-bottom:1rem}
-    .hero p{font-family:sans-serif;font-size:15px;color:#5F5E5A;max-width:420px}
-    .hero img{max-width:220px}
+/* HERO */
+.hero{
+  max-width:900px;margin:auto;padding:4rem 2rem;
+  display:flex;gap:2rem;align-items:center;justify-content:space-between
+}
+.hero h1{font-size:40px;color:#412402;margin-bottom:1rem}
+.hero p{font-family:sans-serif;font-size:15px;color:#5F5E5A;max-width:420px}
+.hero img{max-width:220px}
 
-    .section{max-width:900px;margin:auto;padding:4rem 2rem}
-    .section h2{font-size:28px;color:#412402;margin-bottom:1rem}
-    .section p{font-family:sans-serif;color:#5F5E5A;line-height:1.7}
+/* SECCIONES */
+.section{max-width:900px;margin:auto;padding:4rem 2rem}
+.section h2{font-size:28px;color:#412402;margin-bottom:1rem}
+.section p{font-family:sans-serif;color:#5F5E5A;line-height:1.7;margin-bottom:1rem}
 
-    .gallery{
-      max-width:900px;margin:2rem auto;padding:0 2rem;
-      display:grid;grid-template-columns:repeat(3,1fr);gap:1rem
-    }
-    .gallery img{width:100%;border-radius:12px;object-fit:cover}
+/* GALERIA */
+.gallery{
+  max-width:900px;margin:2rem auto;padding:0 2rem;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem
+}
+.gallery img{width:100%;border-radius:12px;object-fit:cover}
 
-    .products{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:1rem
-    }
-    .product{
-      background:#fff;border:1px solid #EFE8D8;
-      border-radius:12px;padding:1rem;
-      display:flex;flex-direction:column
-    }
-    .product-img{height:140px;border-radius:8px;overflow:hidden}
-    .product-img img{width:100%;height:100%;object-fit:cover}
-    .product h3{font-size:15px;color:#412402;margin:.5rem 0}
-    .price{color:#BA7517;font-weight:bold}
-    .product button{
-      margin-top:auto;background:#25D366;color:#fff;
-      border:0;border-radius:6px;padding:8px;
-      cursor:pointer;font-size:13px
-    }
+/* PRODUCTOS */
+.products{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem
+}
+.product{
+  background:#fff;border:1px solid #EFE8D8;
+  border-radius:12px;padding:1rem;
+  display:flex;flex-direction:column
+}
+.product-img{height:140px;border-radius:8px;overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:cover}
+.product h3{font-size:15px;color:#412402;margin:.5rem 0}
+.price{color:#BA7517;font-weight:bold}
+.product button{
+  margin-top:auto;background:#25D366;color:#fff;
+  border:0;border-radius:6px;padding:8px;
+  cursor:pointer;font-size:13px
+}
 
-    iframe{width:100%;height:300px;border:0;border-radius:12px}
+/* MAPA */
+iframe{width:100%;height:300px;border:0;border-radius:12px}
 
-    footer{
-      border-top:1px solid #EFE8D8;
-      max-width:900px;margin:auto;
-      padding:2rem;font-size:12px;
-      color:#888;font-family:sans-serif
-    }
+/* FOOTER */
+footer{
+  border-top:1px solid #EFE8D8;
+  max-width:900px;margin:auto;
+  padding:2rem;font-size:12px;
+  color:#888;font-family:sans-serif
+}
 
-    @media(max-width:700px){
-      .hero,.products,.gallery{grid-template-columns:1fr;flex-direction:column}
-      .nav-links{display:none}
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:700px){
+  .hero{flex-direction:column;text-align:center}
+  .products,.gallery{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+</style>
 </head>
 
 <body>
@@ -87,10 +97,12 @@
 
 <nav>
   <div class="nav-logo">
-    <img src="logo.png"> Mel de Irmáns
+    <img src="logo.png" alt="Mel de Irmáns">
+    Mel de Irmáns
   </div>
   <div class="nav-links">
-    <a href="#productos">Productos</a>
+    <a href="#productos">Produtos</a>
+    <a href="#pedido">Pedido</a>
     <a href="#mapa">Mapa</a>
     <a href="#legal">Legal</a>
   </div>
@@ -100,70 +112,81 @@
   <div>
     <h1>Mel de Irmáns</h1>
     <p>Apicultura galega. Miel artesanal 100 % natural,
-       producida con respecto polas abellas e a tradición familiar.</p>
+    producida con respecto polas abellas e a tradición familiar.</p>
   </div>
-  <img src="logo.png">
+  <img src="logo.png" alt="Logo Mel de Irmáns">
 </section>
 
 <div class="gallery">
-  <img src="colmenas.jpg">
-  <img src="miel.jpg">
-  <img src="abejas.jpg">
+  <img src="colmenas.jpg" alt="Colmenas">
+  <img src="miel.jpg" alt="Miel artesanal">
+  <img src="abejas.jpg" alt="Abejas">
 </div>
 
 <section class="section" id="productos">
-  <h2>O mellor da colmea</h2>
+<h2>O mellor da colmea</h2>
 
-  <div class="products">
+<div class="products">
 
-    <div class="product">
-      <div class="product-img">
-        <img src="miel.jpg">
-      </div>
-      <h3>Miel artesanal</h3>
-      <p>1 kg · Intensa</p>
-      <div class="price">10,00 €</div>
-      <button onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20quero%201kg%20de%20miel%20artesanal')">
-        Pedir por WhatsApp
-      </button>
-    </div>
-
-    <div class="product">
-      <div class="product-img">
-        <img src="arpa.jpg">
-      </div>
-      <h3>Electrónica / arpa velutinas</h3>
-      <p>Fabricación robusta</p>
-      <div class="price">40,00 €</div>
-      <button onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20interésame%20a%20electrónica%20anti%20velutinas')">
-        Pedir por WhatsApp
-      </button>
-    </div>
-
+<div class="product">
+  <div class="product-img">
+    <img src="miel.jpg" alt="Miel artesanal">
   </div>
+  <h3>Miel artesanal</h3>
+  <p>1 kg · Intensa</p>
+  <div class="price">10,00 €</div>
+  <button onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20estou%20interesad%40%20en%20mercarlle%20miel.%20Enviariame%20o%20formulario%20para%20factura%3F')">
+    Pedir por WhatsApp
+  </button>
+</div>
+
+<div class="product">
+  <div class="product-img">
+    <img src="arpa.jpg" alt="Electrónica velutinas">
+  </div>
+  <h3>Electrónica / arpa velutinas</h3>
+  <p>Sistema anti velutina</p>
+  <div class="price">40,00 €</div>
+  <button onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20interesame%20a%20electrónica%20anti%20velutinas.%20Podes%20pasarme%20o%20formulario%3F')">
+    Pedir por WhatsApp
+  </button>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="pedido">
+<h2>Pedido con factura</h2>
+<p>
+Para xestionar pedidos, envíos ou emitir factura,
+é necesario cubrir o formulario cos datos do cliente
+e os produtos desexados.
+</p>
+
+<a href="https://forms.gle/pb1ZVfc4CrzvNXLt5" target="_blank" style="font-weight:bold;">
+🧾 Cubrir formulario de pedido / factura
+</a>
 </section>
 
 <section class="section" id="mapa">
-  <h2>Onde estamos</h2>
-  <iframe 
-    src="https://www.google.com/maps?q=Galicia&output=embed"
-    loading="lazy">
-  </iframe>
+<h2>Onde estamos</h2>
+<iframe src="https://www.google.com/maps?q=Galicia&output=embed"></iframe>
 </section>
 
 <section class="section" id="legal">
-  <h2> Aviso legal e privacidade</h2>
-  <p><strong>Titular:</strong> Mel de Irmáns</p>
-  <p><strong>Email:</strong> meldeirmans@gmail.com</p>
-  <p>Os datos enviados por correo ou WhatsApp utilízanse
-     unicamente para responder ás solicitudes e xestionar pedidos.
-     Esta web non utiliza cookies de seguimento nin publicidade.</p>
+<h2>Aviso legal e privacidade</h2>
+<p><strong>Titular:</strong> Mel de Irmáns</p>
+<p><strong>Email:</strong> meldeirmans@gmail.com</p>
+<p>
+Os datos facilitados mediante WhatsApp ou o formulario
+utilízanse exclusivamente para a xestión de pedidos
+e emisión de facturas. Non se cederán a terceiros.
+</p>
 </section>
 
 <footer>
-  © 2026 Mel de Irmáns — Apicultura Galega · Feito con agarimo NIC🐝
+© 2026 Mel de Irmáns — Apicultura Galega · Feito con agarimo NIC🐝
 </footer>
 
 </body>
 </html>
-``
