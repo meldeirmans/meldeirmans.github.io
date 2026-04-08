@@ -1,203 +1,353 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apicultura Mel — Miel artesanal 100% natural</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mel de Irmáns — Apicultura Galega · Miel artesanal</title>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Georgia, serif; color: #2C2C2A; background: #FFFDF8; }
     a { text-decoration: none; color: inherit; }
 
     /* NAV */
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #EFE8D8; position: sticky; top: 0; background: #FFFDF8; z-index: 10; }
-    .nav-logo { font-size: 18px; font-weight: bold; letter-spacing: -0.3px; color: #633806; }
-    .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { font-size: 13px; color: #888780; font-family: sans-serif; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid #EFE8D8;
+      position: sticky;
+      top: 0;
+      background: #FFFDF8;
+      z-index: 10;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+      color: #633806;
+      font-size: 16px;
+    }
+
+    .nav-logo img {
+      height: 42px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-family: sans-serif;
+      font-size: 13px;
+      color: #888780;
+    }
+
     .nav-links a:hover { color: #2C2C2A; }
-    .nav-cta { background: #BA7517; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: sans-serif; }
+
+    .nav-cta {
+      background: #BA7517;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
+
     .nav-cta:hover { background: #854F0B; }
 
     /* HERO */
-    .hero { display: flex; align-items: center; justify-content: space-between; padding: 5rem 2rem 4rem; max-width: 900px; margin: 0 auto; gap: 2rem; }
-    .hero-tag { display: inline-block; background: #FAEEDA; color: #854F0B; font-size: 11px; padding: 4px 10px; border-radius: 8px; margin-bottom: 1rem; font-family: sans-serif; }
-    .hero-title { font-size: 40px; font-weight: bold; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 1rem; color: #412402; }
-    .hero-sub { font-size: 15px; color: #5F5E5A; line-height: 1.7; margin-bottom: 1.5rem; max-width: 400px; font-family: sans-serif; }
-    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn-primary { background: #BA7517; color: #fff; border: none; padding: 10px 22px; border-radius: 8px; font-size: 14px; cursor: pointer; font-family: sans-serif; }
-    .btn-primary:hover { background: #854F0B; }
-    .btn-secondary { background: transparent; color: #2C2C2A; border: 1px solid #B4B2A9; padding: 10px 22px; border-radius: 8px; font-size: 14px; cursor: pointer; font-family: sans-serif; }
-    .btn-secondary:hover { background: #F1EFE8; }
-    .hero-svg { flex: 0 0 auto; }
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: auto;
+      padding: 4rem 2rem;
+      gap: 2rem;
+    }
 
-    /* DIVIDER */
-    .divider { height: 1px; background: #EFE8D8; margin: 0 2rem; }
+    .hero h1 {
+      font-size: 40px;
+      color: #412402;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-family: sans-serif;
+      font-size: 15px;
+      color: #5F5E5A;
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #BA7517;
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
+
+    .btn-primary:hover { background: #854F0B; }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #B4B2A9;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
+
+    .hero-logo-big {
+      max-width: 240px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #EFE8D8;
+      margin: 0 2rem;
+    }
 
     /* SECTIONS */
-    .section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
-    .section-label { font-size: 11px; color: #BA7517; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; font-family: sans-serif; }
-    .section-title { font-size: 28px; font-weight: bold; margin-bottom: 0.75rem; letter-spacing: -0.3px; color: #412402; }
-    .section-sub { font-size: 14px; color: #5F5E5A; line-height: 1.7; max-width: 500px; margin-bottom: 2rem; font-family: sans-serif; }
+    .section {
+      max-width: 900px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
 
-    /* SOBRE NOSOTROS */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .about-card { background: #FFFDF8; border-radius: 12px; padding: 1.25rem; border: 1px solid #EFE8D8; }
-    .about-icon { font-size: 22px; margin-bottom: 0.5rem; }
-    .about-card h3 { font-size: 15px; font-weight: bold; margin-bottom: 0.25rem; color: #412402; }
-    .about-card p { font-size: 13px; color: #5F5E5A; line-height: 1.6; font-family: sans-serif; }
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #BA7517;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-family: sans-serif;
+    }
 
-    /* PRODUCTOS */
-    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .product-card { background: #fff; border: 1px solid #EFE8D8; border-radius: 12px; overflow: hidden; }
-    .product-img { height: 100px; background: #FAEEDA; display: flex; align-items: center; justify-content: center; font-size: 40px; }
-    .product-body { padding: 1rem; }
-    .product-name { font-size: 14px; font-weight: bold; margin-bottom: 4px; color: #412402; }
-    .product-desc { font-size: 12px; color: #5F5E5A; margin-bottom: 0.75rem; line-height: 1.5; font-family: sans-serif; }
-    .product-price { font-size: 15px; font-weight: bold; color: #BA7517; }
+    .section-title {
+      font-size: 28px;
+      color: #412402;
+      margin-bottom: 1rem;
+    }
 
-    /* RESERVA */
-    .reserva-box { background: #FAEEDA; border-radius: 12px; border: 1px solid #FAC775; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
-    .form-group label { font-size: 12px; color: #5F5E5A; font-family: sans-serif; }
-    .form-group input, .form-group select, .form-group textarea { padding: 8px 10px; border: 1px solid #FAC775; border-radius: 8px; font-size: 13px; font-family: sans-serif; background: #fff; color: #2C2C2A; }
-    .form-group textarea { resize: none; height: 80px; }
-    .visita-card { background: #fff; border-radius: 10px; padding: 1rem; border: 1px solid #FAC775; margin-bottom: 0.75rem; }
-    .visita-card h4 { font-size: 13px; font-weight: bold; color: #633806; margin-bottom: 4px; }
-    .visita-card p { font-size: 12px; color: #854F0B; line-height: 1.5; font-family: sans-serif; }
+    .section-sub {
+      font-family: sans-serif;
+      font-size: 14px;
+      color: #5F5E5A;
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
 
-    /* CONTACTO */
-    .contact-list { display: flex; flex-direction: column; gap: 1.25rem; }
-    .contact-item { display: flex; gap: 12px; align-items: flex-start; }
-    .contact-dot { width: 8px; height: 8px; border-radius: 50%; background: #BA7517; margin-top: 5px; flex-shrink: 0; }
-    .contact-item strong { font-size: 13px; font-weight: bold; color: #412402; display: block; margin-bottom: 2px; }
-    .contact-item p { font-size: 13px; color: #5F5E5A; font-family: sans-serif; }
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
 
-    /* FOOTER */
-    footer { border-top: 1px solid #EFE8D8; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
-    footer p { font-size: 12px; color: #888780; font-family: sans-serif; }
+    .about-card {
+      border: 1px solid #EFE8D8;
+      padding: 1.2rem;
+      border-radius: 12px;
+      background: #FFFDF8;
+    }
 
-    /* RESPONSIVE */
+    .about-card h3 {
+      font-size: 15px;
+      margin-bottom: 0.3rem;
+      color: #412402;
+    }
+
+    .about-card p {
+      font-family: sans-serif;
+      font-size: 13px;
+      color: #5F5E5A;
+      line-height: 1.6;
+    }
+
+    /* PRODUCTS */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .product-card {
+      border: 1px solid #EFE8D8;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .product-img {
+      height: 100px;
+      background: #FAEEDA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+
+    .product-body {
+      padding: 1rem;
+    }
+
+    .product-body h4 {
+      font-size: 14px;
+      color: #412402;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-body p {
+      font-family: sans-serif;
+      font-size: 12px;
+      color: #5F5E5A;
+      margin-bottom: 0.6rem;
+      line-height: 1.5;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #BA7517;
+    }
+
+    /* CONTACT */
+    footer {
+      border-top: 1px solid #EFE8D8;
+      padding: 1.5rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      font-family: sans-serif;
+      font-size: 12px;
+      color: #888780;
+    }
+
+    /* MOBILE */
     @media (max-width: 600px) {
-      .hero { flex-direction: column; padding: 3rem 1.5rem 2rem; }
-      .hero-svg { display: none; }
-      .about-grid, .products-grid, .reserva-box { grid-template-columns: 1fr; }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-logo-big { max-width: 180px; }
+      .about-grid, .products-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
 </head>
+
 <body>
 
-<!-- NAVEGACIÓN -->
 <nav>
-  <div class="nav-logo">🍯 Apicultura Mel</div>
+  <div class="nav-logo">
+    <img src="logo.png" alt="Mel de Irmáns">
+    Mel de Irmáns
+  </div>
   <div class="nav-links">
     <a href="#sobre">Nosotros</a>
     <a href="#productos">Productos</a>
-    <a href="#reserva">Reserva</a>
     <a href="#contacto">Contacto</a>
   </div>
-  <button class="nav-cta" onclick="document.getElementById('reserva').scrollIntoView({behavior:'smooth'})">Reservar visita</button>
+  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
+    Contacto
+  </button>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
+<section class="hero">
   <div>
-    <span class="hero-tag">Miel artesanal 100% natural</span>
-    <h1 class="hero-title">De la colmena<br>a tu mesa</h1>
-    <p class="hero-sub">Producimos mieles puras y productos de la colmena con más de 20 años de experiencia. Sin aditivos, sin procesar, con todo el sabor de la naturaleza.</p>
+    <h1>Mel de Irmáns</h1>
+    <p>
+      Apicultura galega. Miel artesanal 100 % natural, producida con respecto polas abellas,
+      a terra e a tradición familiar.
+    </p>
     <div class="hero-btns">
-      <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">Ver productos</button>
-      <button class="btn-secondary" onclick="document.getElementById('reserva').scrollIntoView({behavior:'smooth'})">Reservar visita</button>
+      <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">Ver produtos</button>
+      <button class="btn-secondary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</button>
     </div>
   </div>
-  <svg class="hero-svg" width="180" height="180" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="80,10 140,45 140,115 80,150 20,115 20,45" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1.5"/>
-    <polygon points="80,35 110,52 110,87 80,104 50,87 50,52" fill="#FAC775" stroke="#EF9F27" stroke-width="1"/>
-    <polygon points="80,55 97,65 97,84 80,94 63,84 63,65" fill="#EF9F27" stroke="#BA7517" stroke-width="1"/>
-    <text x="80" y="83" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#633806">🐝</text>
-    <text x="80" y="128" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#BA7517" font-weight="500">100% Natural</text>
-  </svg>
-</div>
+  <img src="logo.png" class="hero-logo-big" alt="Logo Mel de Irmáns">
+</section>
 
 <div class="divider"></div>
 
-<!-- SOBRE NOSOTROS -->
-<div class="section" id="sobre">
-  <p class="section-label">Sobre nosotros</p>
-  <h2 class="section-title">Apicultura familiar con alma</h2>
-  <p class="section-sub">Somos una apicultura artesanal ubicada en el corazón del campo. Cuidamos nuestras colmenas con respeto hacia las abejas y el entorno.</p>
+<section class="section" id="sobre">
+  <p class="section-label">Sobre nós</p>
+  <h2 class="section-title">Apicultura familiar galega</h2>
+  <p class="section-sub">
+    Coidamos as nosas colmeas de forma natural, respectando os ciclos das abellas e o
+    equilibrio co medio ambiente.
+  </p>
+
   <div class="about-grid">
-    <div class="about-card"><div class="about-icon">🍯</div><h3>Miel pura</h3><p>Extraída en frío, sin pasteurizar, conservando todos sus nutrientes y propiedades naturales.</p></div>
-    <div class="about-card"><div class="about-icon">🌿</div><h3>Producción ecológica</h3><p>Sin pesticidas ni químicos. Nuestras colmenas están situadas lejos de zonas industriales.</p></div>
-    <div class="about-card"><div class="about-icon">🐝</div><h3>Bienestar animal</h3><p>Trabajamos con métodos que respetan los ciclos naturales de las abejas y el medioambiente.</p></div>
-    <div class="about-card"><div class="about-icon">📦</div><h3>Envío a domicilio</h3><p>Pedidos online con envío a toda la península. Embalaje cuidado para que llegue en perfecto estado.</p></div>
+    <div class="about-card">
+      <h3>🍯 Miel pura</h3>
+      <p>Extraída en frío, sin pasteurizar e sen aditivos.</p>
+    </div>
+    <div class="about-card">
+      <h3>🌿 Natural</h3>
+      <p>Colmeas situadas en zonas limpas do rural galego.</p>
+    </div>
+    <div class="about-card">
+      <h3>🐝 Respecto animal</h3>
+      <p>Traballamos sempre pensando no benestar das abellas.</p>
+    </div>
+    <div class="about-card">
+      <h3>📦 Venda directa</h3>
+      <p>Do produtor ao cliente, sen intermediarios.</p>
+    </div>
   </div>
-</div>
+</section>
 
 <div class="divider"></div>
 
-<!-- PRODUCTOS -->
-<div class="section" id="productos">
-  <p class="section-label">Productos</p>
-  <h2 class="section-title">Lo mejor de la colmena</h2>
-  <p class="section-sub">Miel, propóleo, cera y más. Todos nuestros productos son 100% naturales y elaborados de forma artesanal.</p>
+<section class="section" id="productos">
+  <p class="section-label">Produtos</p>
+  <h2 class="section-title">O mellor da colmea</h2>
+
   <div class="products-grid">
-    <div class="product-card"><div class="product-img">🍯</div><div class="product-body"><p class="product-name">Miel de azahar</p><p class="product-desc">Suave y aromática. Ideal para infusiones y postres. Frasco 500g.</p><p class="product-price">9,50 €</p></div></div>
-    <div class="product-card"><div class="product-img">🌸</div><div class="product-body"><p class="product-name">Miel de eucalipto</p><p class="product-desc">Intensa y con propiedades respiratorias. Frasco 500g.</p><p class="product-price">10,00 €</p></div></div>
-    <div class="product-card"><div class="product-img">🌿</div><div class="product-body"><p class="product-name">Propóleo en tintura</p><p class="product-desc">Antibacteriano natural. 30 ml con cuentagotas.</p><p class="product-price">12,00 €</p></div></div>
-    <div class="product-card"><div class="product-img">🕯️</div><div class="product-body"><p class="product-name">Cera de abeja</p><p class="product-desc">Para cosmética e iluminación artesanal. Bloque 200g.</p><p class="product-price">7,50 €</p></div></div>
-    <div class="product-card"><div class="product-img">🎁</div><div class="product-body"><p class="product-name">Pack degustación</p><p class="product-desc">3 variedades de miel de 250g. El regalo perfecto.</p><p class="product-price">22,00 €</p></div></div>
-    <div class="product-card"><div class="product-img">🌼</div><div class="product-body"><p class="product-name">Polen de abeja</p><p class="product-desc">Superalimento natural. Rico en proteínas y vitaminas. 200g.</p><p class="product-price">14,00 €</p></div></div>
+    <div class="product-card"><div class="product-img">🍯</div><div class="product-body"><h4>Miel de azahar</h4><p>Suave e aromática · 500 g</p><span class="price">9,50 €</span></div></div>
+    <div class="product-card"><div class="product-img">🌸</div><div class="product-body"><h4>Miel de eucalipto</h4><p>Intensa · 500 g</p><span class="price">10,00 €</span></div></div>
+    <div class="product-card"><div class="product-img">🌿</div><div class="product-body"><h4>Propóleo</h4><p>Tintura natural · 30 ml</p><span class="price">12,00 €</span></div></div>
+    <div class="product-card"><div class="product-img">🕯️</div><div class="product-body"><h4>Cera de abeja</h4><p>Natural · 200 g</p><span class="price">7,50 €</span></div></div>
+    <div class="product-card"><div class="product-img">🎁</div><div class="product-body"><h4>Pack degustación</h4><p>3 mieles · 250 g</p><span class="price">22,00 €</span></div></div>
+    <div class="product-card"><div class="product-img">🌼</div><div class="product-body"><h4>Polen</h4><p>Superalimento · 200 g</p><span class="price">14,00 €</span></div></div>
   </div>
-</div>
+</section>
 
 <div class="divider"></div>
 
-<!-- RESERVA -->
-<div class="section" id="reserva">
-  <p class="section-label">Reserva</p>
-  <h2 class="section-title">Visita nuestras colmenas</h2>
-  <p class="section-sub">Ofrecemos visitas guiadas para familias, colegios y grupos. Vive la experiencia de la apicultura de cerca.</p>
-  <div class="reserva-box">
-    <div>
-      <div class="form-group"><label>Nombre completo</label><input type="text" placeholder="Tu nombre"></div>
-      <div class="form-group"><label>Correo electrónico</label><input type="email" placeholder="correo@ejemplo.com"></div>
-      <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-      <div class="form-group"><label>Número de personas</label>
-        <select><option>1–2 personas</option><option>3–5 personas</option><option>6–10 personas</option><option>Grupo escolar (+10)</option></select>
-      </div>
-      <div class="form-group"><label>Comentarios</label><textarea placeholder="¿Alguna preferencia o pregunta?"></textarea></div>
-      <button class="btn-primary" style="width:100%; padding:10px;">Enviar reserva</button>
-    </div>
-    <div>
-      <div class="visita-card"><h4>Visita estándar</h4><p>1h · Guiada · Cata de miel incluida · 8 € por persona</p></div>
-      <div class="visita-card"><h4>Taller de apicultura</h4><p>2h · Traje de apicultor · Extracción de miel · 18 € por persona</p></div>
-      <div class="visita-card" style="background:#EAF3DE; border-color:#C0DD97;"><h4 style="color:#27500A;">Grupos escolares</h4><p style="color:#3B6D11;">Adaptado a niños · Actividades educativas · Consultar precio</p></div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- CONTACTO -->
-<div class="section" id="contacto">
+<section class="section" id="contacto">
   <p class="section-label">Contacto</p>
-  <h2 class="section-title">Estamos a tu disposición</h2>
-  <p class="section-sub">¿Tienes dudas sobre un pedido o quieres saber más? Escríbenos o llámanos.</p>
-  <div class="contact-list">
-    <div class="contact-item"><div class="contact-dot"></div><div><strong>Teléfono</strong><p>+34 600 000 000 — Lunes a viernes, 9h–18h</p></div></div>
-    <div class="contact-item"><div class="contact-dot"></div><div><strong>Correo electrónico</strong><p>hola@apiculturamiel.com</p></div></div>
-    <div class="contact-item"><div class="contact-dot"></div><div><strong>Dirección</strong><p>Camino de las Colmenas, s/n — Galicia, España</p></div></div>
-    <div class="contact-item"><div class="contact-dot"></div><div><strong>Redes sociales</strong><p>@apiculturamiel en Instagram y Facebook</p></div></div>
-  </div>
-</div>
-
-<div class="divider"></div>
+  <h2 class="section-title">Falamos cando queiras</h2>
+  <p class="section-sub">
+    Escríbenos para pedidos, dúbidas ou información.
+  </p>
+  <p><strong>Email:</strong> meldeirmans@gmail.com</p>
+</section>
 
 <footer>
-  <p>© 2026 Apicultura Mel — Todos los derechos reservados</p>
-  <p>Hecho con amor y cera de abeja 🐝</p>
+  <p>© 2026 Mel de Irmáns — Apicultura Galega</p>
+  <p>Feito con agarimo e cera de abeja 🐝</p>
 </footer>
 
 </body>
