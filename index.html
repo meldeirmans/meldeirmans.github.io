@@ -1,192 +1,377 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="gl">
 <head>
 <meta charset="UTF-8">
-<title>Mel de Irmáns — Apicultura Galega</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Mel de Irmáns — Apicultura Galega</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Georgia,serif;background:#FFFDF8;color:#2C2C2A}
+:root{
+  --cream:#FFFDF6;
+  --amber-dark:#412402;
+  --amber-mid:#633806;
+  --amber:#BA7517;
+  --amber-light:#FAEEDA;
+  --amber-pale:#FAF4E6;
+  --text-muted:#5F5E5A;
+  --border:#EFE8D8;
+  --white:#ffffff;
+  --green:#25D366;
+  --green-light:#EAF3DE;
+  --green-text:#3B6D11;
+}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,serif;background:var(--cream);color:var(--amber-dark);line-height:1.6}
 a{text-decoration:none;color:inherit}
 
-/* WhatsApp flotante */
-.whatsapp{
-  position:fixed;bottom:20px;right:20px;
-  width:56px;height:56px;border-radius:50%;
-  background:#25D366;color:#fff;
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:99;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--green);color:#fff;
   display:flex;align-items:center;justify-content:center;
-  font-size:26px;z-index:100
+  box-shadow:0 4px 16px rgba(37,211,102,0.35);
+  transition:transform .2s;cursor:pointer
 }
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:26px;height:26px;fill:#fff}
 
-/* NAV */
 nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 2rem;border-bottom:1px solid #EFE8D8;
-  background:#FFFDF8;position:sticky;top:0;z-index:10
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,253,248,0.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  padding:.9rem 2rem;
+  display:flex;align-items:center;justify-content:space-between
 }
-.nav-logo{display:flex;align-items:center;gap:10px;font-weight:bold;color:#633806}
-.nav-logo img{height:42px}
-.nav-links{display:flex;gap:1rem;font-size:13px;font-family:sans-serif}
-.nav-links a{color:#888}
-.nav-links a:hover{color:#000}
+.logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:bold;color:var(--amber-mid)}
+.logo-hex{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.nav-links{display:flex;gap:1.5rem;font-family:system-ui,sans-serif;font-size:13px}
+.nav-links a{color:var(--text-muted);transition:color .2s}
+.nav-links a:hover{color:var(--amber-mid)}
 
-/* HERO */
-.hero{
-  max-width:900px;margin:auto;padding:4rem 2rem;
-  display:flex;gap:2rem;align-items:center;justify-content:space-between
-}
-.hero h1{font-size:40px;color:#412402;margin-bottom:1rem}
-.hero p{font-family:sans-serif;font-size:15px;color:#5F5E5A;max-width:420px}
-.hero img{max-width:220px}
+.hero{max-width:960px;margin:0 auto;padding:5rem 2rem 4rem;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.hero-badge{display:inline-block;background:var(--amber-light);color:var(--amber);font-family:system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:1.2rem}
+.hero h1{font-size:clamp(32px,5vw,54px);color:var(--amber-dark);line-height:1.1;margin-bottom:1.2rem}
+.hero p{font-family:system-ui,sans-serif;font-size:16px;color:var(--text-muted);max-width:440px;line-height:1.7;margin-bottom:2rem}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-primary{background:var(--amber-mid);color:#fff;padding:11px 22px;border-radius:8px;font-family:system-ui,sans-serif;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:var(--amber-dark)}
+.btn-secondary{background:transparent;color:var(--amber-mid);padding:11px 22px;border-radius:8px;font-family:system-ui,sans-serif;font-size:14px;font-weight:600;border:1.5px solid var(--amber-mid);cursor:pointer;transition:all .2s}
+.btn-secondary:hover{background:var(--amber-light)}
+.hero-visual{width:180px;height:180px;flex-shrink:0;background:var(--amber-light);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:88px;border:2px solid var(--border)}
 
-/* SECCIONES */
-.section{max-width:900px;margin:auto;padding:4rem 2rem}
-.section h2{font-size:28px;color:#412402;margin-bottom:1rem}
-.section p{font-family:sans-serif;color:#5F5E5A;line-height:1.7;margin-bottom:1rem}
+.stats{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--white)}
+.stats-inner{max-width:960px;margin:0 auto;padding:1.5rem 2rem;display:flex}
+.stat{flex:1;text-align:center;padding:0 1rem;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-num{display:block;font-size:22px;font-weight:bold;color:var(--amber-mid);margin-bottom:2px}
+.stat-label{font-family:system-ui,sans-serif;font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
 
-/* GALERIA */
-.gallery{
-  max-width:900px;margin:2rem auto;padding:0 2rem;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem
-}
-.gallery img{width:100%;border-radius:12px;object-fit:cover}
+.gallery-strip{max-width:960px;margin:3rem auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;height:240px}
+.main-img{border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#c9882a,#8b5e1a);display:flex;align-items:center;justify-content:center;font-size:64px}
+.side-img{border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#d4a843,#9e6e1c);display:flex;align-items:center;justify-content:center;font-size:40px}
+.side-img:last-child{background:linear-gradient(135deg,#b87333,#7a4a18)}
+.gallery-strip img{width:100%;height:100%;object-fit:cover}
 
-/* PRODUCTOS */
-.products{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem
-}
-.product{
-  background:#fff;border:1px solid #EFE8D8;
-  border-radius:12px;padding:1rem;
-  display:flex;flex-direction:column
-}
-.product-img{height:140px;border-radius:8px;overflow:hidden}
-.product-img img{width:100%;height:100%;object-fit:cover}
-.product h3{font-size:15px;color:#412402;margin:.5rem 0}
-.price{color:#BA7517;font-weight:bold}
-.product button{
-  margin-top:auto;background:#25D366;color:#fff;
-  border:0;border-radius:6px;padding:8px;
-  cursor:pointer;font-size:13px
-}
+.section{max-width:960px;margin:0 auto;padding:4rem 2rem}
+.section-label{font-family:system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem}
+.section h2{font-size:clamp(22px,3vw,34px);color:var(--amber-dark);margin-bottom:.6rem}
+.section > p{font-family:system-ui,sans-serif;color:var(--text-muted);line-height:1.75;margin-bottom:.9rem}
 
-/* MAPA */
-iframe{width:100%;height:300px;border:0;border-radius:12px}
+.tabs{display:flex;gap:.5rem;margin:1.5rem 0;flex-wrap:wrap}
+.tab{font-family:system-ui,sans-serif;font-size:13px;font-weight:600;padding:7px 16px;border-radius:20px;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--text-muted);transition:all .2s}
+.tab.active{background:var(--amber-mid);color:#fff;border-color:var(--amber-mid)}
+.tab:hover:not(.active){background:var(--amber-light);border-color:var(--amber)}
 
-/* FOOTER */
-footer{
-  border-top:1px solid #EFE8D8;
-  max-width:900px;margin:auto;
-  padding:2rem;font-size:12px;
-  color:#888;font-family:sans-serif
-}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;margin-top:1rem}
+.product-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.07)}
+.product-card.hidden{display:none}
+.product-thumb{height:150px;display:flex;align-items:center;justify-content:center;font-size:52px}
+.thumb-mel{background:linear-gradient(135deg,#FAEEDA,#EFE8D8)}
+.thumb-velutina{background:linear-gradient(135deg,#EAF3DE,#C0DD97)}
+.product-body{padding:1.1rem;display:flex;flex-direction:column;flex:1}
+.product-tag{display:inline-block;font-family:system-ui,sans-serif;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:.5rem}
+.tag-mel{background:var(--amber-light);color:var(--amber)}
+.tag-velutina{background:var(--green-light);color:var(--green-text)}
+.product-card h3{font-size:15px;color:var(--amber-dark);margin-bottom:.3rem;line-height:1.3}
+.product-card .desc{font-family:system-ui,sans-serif;font-size:13px;color:var(--text-muted);margin-bottom:.9rem;line-height:1.5;flex:1}
+.product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.price{font-size:21px;font-weight:bold;color:var(--amber-mid)}
+.wa-btn{background:var(--green);color:#fff;border:none;padding:8px 14px;border-radius:8px;font-family:system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .2s}
+.wa-btn:hover{opacity:.85}
+.wa-icon{width:14px;height:14px;fill:currentColor}
 
-/* RESPONSIVE */
-@media(max-width:700px){
-  .hero{flex-direction:column;text-align:center}
-  .products,.gallery{grid-template-columns:1fr}
+.order-box{background:var(--amber-dark);color:#fff;border-radius:20px;padding:3rem 2.5rem;display:flex;align-items:center;gap:3rem;margin-top:2rem}
+.order-box h2{font-size:26px;margin-bottom:.8rem;color:#fff}
+.order-box p{font-family:system-ui,sans-serif;font-size:15px;opacity:.8;line-height:1.7;margin-bottom:1.5rem}
+.btn-light{background:#fff;color:var(--amber-dark);padding:12px 24px;border-radius:8px;font-family:system-ui,sans-serif;font-size:14px;font-weight:700;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.order-emoji{font-size:80px;flex-shrink:0}
+
+.map-box{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:300px;margin-top:1.5rem}
+.map-box iframe{width:100%;height:100%;border:none}
+
+.legal-box{background:var(--amber-pale);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:2rem;font-family:system-ui,sans-serif;font-size:14px;color:var(--text-muted)}
+.legal-box strong{color:var(--amber-mid)}
+
+footer{border-top:1px solid var(--border);max-width:960px;margin:0 auto;padding:2rem;display:flex;align-items:center;justify-content:space-between;font-family:system-ui,sans-serif;font-size:13px;color:var(--text-muted)}
+.footer-logo{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--amber-mid)}
+
+@media(max-width:680px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .hero p{max-width:100%}
+  .hero-visual{display:none}
   .nav-links{display:none}
+  .gallery-strip{grid-template-columns:1fr 1fr;height:auto}
+  .main-img{grid-column:1/-1;height:160px}
+  .side-img{height:120px}
+  .stats-inner{flex-wrap:wrap}
+  .stat{flex:1 1 45%;border-right:none;border-bottom:1px solid var(--border);padding:.6rem}
+  .order-box{flex-direction:column;text-align:center;gap:1.5rem}
+  footer{flex-direction:column;gap:.8rem;text-align:center}
 }
 </style>
 </head>
-
 <body>
 
-<a class="whatsapp" href="https://wa.me/34644827820" target="_blank">🟢</a>
+<!-- WhatsApp flotante -->
+<a class="wa-float" href="https://wa.me/34644827820" target="_blank" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <img src="logo.png" alt="Mel de Irmáns">
+  <div class="logo">
+    <div class="logo-hex">🍯</div>
     Mel de Irmáns
   </div>
   <div class="nav-links">
-    <a href="#productos">Produtos</a>
+    <a href="#produtos">Produtos</a>
     <a href="#pedido">Pedido</a>
-    <a href="#mapa">Mapa</a>
+    <a href="#mapa">Localización</a>
     <a href="#legal">Legal</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div>
-    <h1>Mel de Irmáns</h1>
-    <p>Apicultura galega. Miel artesanal 100 % natural,
-    producida con respecto polas abellas e a tradición familiar.</p>
+    <span class="hero-badge">🐝 Apicultura Galega</span>
+    <h1>Mel artesanal<br>de Galicia</h1>
+    <p>Producido con respecto polas abellas e a tradición familiar. 100&nbsp;% natural, sen aditivos, directamente da colmea á túa mesa.</p>
+    <div class="hero-actions">
+      <a href="#produtos"><button class="btn-primary">Ver produtos</button></a>
+      <a href="https://wa.me/34644827820" target="_blank"><button class="btn-secondary">Falar por WhatsApp</button></a>
+    </div>
   </div>
-  <img src="logo.png" alt="Logo Mel de Irmáns">
+  <div class="hero-visual">🍯</div>
 </section>
 
-<div class="gallery">
-  <img src="colmenas.jpg" alt="Colmenas">
-  <img src="miel.jpg" alt="Miel artesanal">
-  <img src="abejas.jpg" alt="Abejas">
-</div>
-
-<section class="section" id="productos">
-<h2>O mellor da colmea</h2>
-
-<div class="products">
-
-<div class="product">
-  <div class="product-img">
-    <img src="miel.jpg" alt="Miel artesanal">
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Natural</span></div>
+    <div class="stat"><span class="stat-num">Galicia</span><span class="stat-label">Orixe</span></div>
+    <div class="stat"><span class="stat-num">Artesanal</span><span class="stat-label">Elaboración</span></div>
+    <div class="stat"><span class="stat-num">24h</span><span class="stat-label">Resposta</span></div>
   </div>
-  <h3>Miel artesanal</h3>
-  <p>1 kg · Intensa</p>
-  <div class="price">10,00 €</div>
-  <button onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20estou%20interesad%40%20en%20mercarlle%20miel.%20Enviariame%20o%20formulario%20para%20factura%3F')">
-    Pedir por WhatsApp
-  </button>
 </div>
 
-<div class="product">
-  <div class="product-img">
-    <img src="arpa.jpg" alt="Electrónica velutinas">
+<!-- GALERÍA -->
+<div class="gallery-strip">
+  <div class="main-img">
+    <!-- Substitúe por: <img src="colmenas.jpg" alt="Colmeas"> -->
+    🐝
   </div>
-  <h3>Electrónica / arpa velutinas</h3>
-  <p>Sistema anti velutina</p>
-  <div class="price">40,00 €</div>
-  <button onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20interesame%20a%20electrónica%20anti%20velutinas.%20Podes%20pasarme%20o%20formulario%3F')">
-    Pedir por WhatsApp
-  </button>
+  <div class="side-img">
+    <!-- Substitúe por: <img src="miel.jpg" alt="Mel artesanal"> -->
+    🍯
+  </div>
+  <div class="side-img">
+    <!-- Substitúe por: <img src="abejas.jpg" alt="Abellas"> -->
+    🌸
+  </div>
 </div>
 
-</div>
+<!-- PRODUTOS -->
+<section class="section" id="produtos">
+  <div class="section-label">O mellor da colmea</div>
+  <h2>Os nosos produtos</h2>
+  <p>Mel artesanal e solucións contra a Vespa velutina para protexer as túas colmeas.</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="filterProducts('all',this)">Todos</button>
+    <button class="tab" onclick="filterProducts('mel',this)">🍯 Mel</button>
+    <button class="tab" onclick="filterProducts('velutina',this)">🪲 Anti-velutina</button>
+  </div>
+
+  <div class="products" id="products-grid">
+
+    <!-- MEL -->
+    <div class="product-card" data-cat="mel">
+      <div class="product-thumb thumb-mel">
+        <!-- Substitúe por: <img src="miel.jpg" alt="Frasco mel 1 kg"> -->
+        🍯
+      </div>
+      <div class="product-body">
+        <span class="product-tag tag-mel">Mel</span>
+        <h3>Frasco mel artesanal 1 kg</h3>
+        <p class="desc">Mel 100 % natural de Galicia. Sabor intenso, sen aditivos nin tratamentos térmicos.</p>
+        <div class="product-footer">
+          <span class="price">10,00 €</span>
+          <button class="wa-btn" onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20quero%20pedir%20frasco%20de%20mel%201%20kg.%20Podes%20pasarme%20o%20formulario%3F')">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELECTRÓNICA 220V -->
+    <div class="product-card" data-cat="velutina">
+      <div class="product-thumb thumb-velutina">⚡</div>
+      <div class="product-body">
+        <span class="product-tag tag-velutina">Anti-velutina</span>
+        <h3>Electrónica para velutinas 220V</h3>
+        <p class="desc">Sistema electrónico de alta tensión para arpa anti Vespa velutina. Conexión á rede eléctrica 220V.</p>
+        <div class="product-footer">
+          <span class="price">40,00 €</span>
+          <button class="wa-btn" onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20interésame%20a%20electrónica%20para%20velutinas%20220V.%20Podes%20pasarme%20o%20formulario%3F')">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROTECTOR PIQUERA -->
+    <div class="product-card" data-cat="velutina">
+      <div class="product-thumb thumb-velutina">🛡️</div>
+      <div class="product-body">
+        <span class="product-tag tag-velutina">Anti-velutina</span>
+        <h3>Protector piquera anti-velutina</h3>
+        <p class="desc">Protexe a entrada da colmea impedindo o acceso da Vespa velutina. Instalación sinxela.</p>
+        <div class="product-footer">
+          <span class="price">25,00 €</span>
+          <button class="wa-btn" onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20interésame%20o%20protector%20piquera%20anti-velutina.%20Podes%20pasarme%20o%20formulario%3F')">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- KIT MONTAXE -->
+    <div class="product-card" data-cat="velutina">
+      <div class="product-thumb thumb-velutina">🔧</div>
+      <div class="product-body">
+        <span class="product-tag tag-velutina">Anti-velutina</span>
+        <h3>Kit de montaxe para arpa velutina</h3>
+        <p class="desc">Conxunto de pezas e accesorios necesarios para o montaxe da arpa electrónica anti-velutina.</p>
+        <div class="product-footer">
+          <span class="price">25,00 €</span>
+          <button class="wa-btn" onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20interésame%20o%20kit%20de%20montaxe%20para%20arpa%20velutina.%20Podes%20pasarme%20o%20formulario%3F')">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELECTRÓNICA 15V -->
+    <div class="product-card" data-cat="velutina">
+      <div class="product-thumb thumb-velutina">⚡</div>
+      <div class="product-body">
+        <span class="product-tag tag-velutina">Anti-velutina</span>
+        <h3>Electrónica para velutinas 15V</h3>
+        <p class="desc">Sistema electrónico para arpa anti-velutina. Alimentación a batería 15V, ideal para localizacións sen rede eléctrica.</p>
+        <div class="product-footer">
+          <span class="price">35,00 €</span>
+          <button class="wa-btn" onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20interésame%20a%20electrónica%20para%20velutinas%2015V.%20Podes%20pasarme%20o%20formulario%3F')">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARPAS -->
+    <div class="product-card" data-cat="velutina">
+      <div class="product-thumb thumb-velutina">🪤</div>
+      <div class="product-body">
+        <span class="product-tag tag-velutina">Anti-velutina</span>
+        <h3>Arpas para velutinas</h3>
+        <p class="desc">Arpa electrificada completa para a eliminación eficaz da Vespa velutina nas proximidades da colmea.</p>
+        <div class="product-footer">
+          <span class="price">60,00 €</span>
+          <button class="wa-btn" onclick="window.open('https://wa.me/34644827820?text=Ola%2C%20interésame%20a%20arpa%20para%20velutinas.%20Podes%20pasarme%20o%20formulario%3F')">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<section class="section" id="pedido">
-<h2>Pedido con factura</h2>
-<p>
-Para xestionar pedidos, envíos ou emitir factura,
-é necesario cubrir o formulario cos datos do cliente
-e os produtos desexados.
-</p>
-
-<a href="https://forms.gle/pb1ZVfc4CrzvNXLt5" target="_blank" style="font-weight:bold;">
-🧾 Cubrir formulario de pedido / factura
-</a>
+<!-- PEDIDO -->
+<section class="section" id="pedido" style="padding-top:1rem">
+  <div class="order-box">
+    <div>
+      <h2>Fai o teu pedido con factura</h2>
+      <p>Para xestionar envíos ou emitir factura, cobre o formulario cos teus datos e os produtos que desexas. Respondemos en menos de 24 horas.</p>
+      <a href="https://forms.gle/pb1ZVfc4CrzvNXLt5" target="_blank">
+        <button class="btn-light">🧾 Cubrir formulario de pedido</button>
+      </a>
+    </div>
+    <div class="order-emoji">📦</div>
+  </div>
 </section>
 
-<section class="section" id="mapa">
-<h2>Onde estamos</h2>
-<iframe src="https://www.google.com/maps?q=Galicia&output=embed"></iframe>
+<!-- MAPA -->
+<section class="section" id="mapa" style="padding-top:1rem">
+  <div class="section-label">Localización</div>
+  <h2>Onde estamos</h2>
+  <p>Producimos en Galicia, con abellas criadas no noso contorno natural.</p>
+  <div class="map-box">
+    <iframe src="https://www.google.com/maps?q=Galicia,+España&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
 </section>
 
-<section class="section" id="legal">
-<h2>Aviso legal e privacidade</h2>
-<p><strong>Titular:</strong> Mel de Irmáns</p>
-<p><strong>Email:</strong> meldeirmans@gmail.com</p>
-<p>
-Os datos facilitados mediante WhatsApp ou o formulario
-utilízanse exclusivamente para a xestión de pedidos
-e emisión de facturas. Non se cederán a terceiros.
-</p>
+<!-- LEGAL -->
+<section class="section" id="legal" style="padding-top:1rem">
+  <div class="section-label">Información</div>
+  <h2>Aviso legal e privacidade</h2>
+  <div class="legal-box">
+    <p style="margin-bottom:.6rem"><strong>Titular:</strong> Mel de Irmáns</p>
+    <p style="margin-bottom:.6rem"><strong>Email:</strong> <a href="mailto:meldeirmans@gmail.com" style="color:var(--amber)">meldeirmans@gmail.com</a></p>
+    <p style="margin-bottom:.6rem"><strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/34644827820" style="color:var(--amber)">+34 644 827 820</a></p>
+    <p style="margin-top:1rem;line-height:1.7">Os datos facilitados a través de WhatsApp ou do formulario de pedido utilízanse exclusivamente para a xestión de pedidos e a emisión de facturas. Non se cederán a terceiros nin se usarán con fins comerciais alleos ao negocio.</p>
+  </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-© 2026 Mel de Irmáns — Apicultura Galega · Feito con agarimo NIC🐝
+  <div class="footer-logo">🍯 Mel de Irmáns</div>
+  <span>© 2026 · Apicultura Galega · Feito con agarimo NIC🐝</span>
 </footer>
+
+<script>
+function filterProducts(cat, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>
 
 </body>
 </html>
